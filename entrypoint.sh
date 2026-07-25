@@ -1,0 +1,23 @@
+#!/bin/sh
+set -eu
+
+mkdir -p /config/coeffs /audio /root/camilladsp/configs /root/camilladsp/coeffs
+
+if [ ! -f /config/default.yml ]; then
+  cp /defaults/default.yml /config/default.yml
+fi
+
+cp /config/default.yml /root/camilladsp/configs/default.yml
+touch /root/camilladsp/statefile.yml
+rm -f /audio/spotify.pipe
+mkfifo /audio/spotify.pipe
+
+/usr/local/bin/camilladsp \
+  --statefile /root/camilladsp/statefile.yml \
+  --port 1234 \
+  --address 0.0.0.0 \
+  --logfile /root/camilladsp/camilladsp.log \
+  /root/camilladsp/configs/default.yml &
+
+cd /opt/camillagui_backend
+exec ./camillagui_backend
