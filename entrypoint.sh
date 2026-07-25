@@ -11,6 +11,8 @@ cp /config/default.yml /root/camilladsp/configs/default.yml
 rm -f /audio/spotify.pipe
 mkfifo /audio/spotify.pipe
 chmod 666 /audio/spotify.pipe
+# Keep both ends open so CamillaDSP and Spotify can start in either order.
+exec 3<>/audio/spotify.pipe
 
 /usr/local/bin/camilladsp \
   --port 1234 \
