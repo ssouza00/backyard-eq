@@ -1,0 +1,21 @@
+---
+title: "Spotify DSP"
+description: "Spotify Connect through CamillaDSP to the CMI8788 sound card"
+devices:
+  samplerate: 44100
+  chunksize: 4096
+  volume_ramp_time: 200
+  volume_limit: 0
+  capture:
+    type: RawFile
+    channels: 2
+    filename: "/audio/spotify.pipe"
+    format: S16_LE
+  playback:
+    type: Alsa
+    channels: 2
+    device: "hw:0,0"
+    format: S16_LE
+filters: {}
+mixers: {}
+pipeline: []
