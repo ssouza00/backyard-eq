@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<CommunityApplications>
+  <Profile>Backyard audio applications for Unraid, including CamillaDSP-based professional equalization and Spotify Connect playback. Source, documentation, and support are maintained in this public repository.</Profile>
+  <Icon>https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/music-assistant.png</Icon>
+  <WebPage>https://github.com/ssouza00/backyard-eq</WebPage>
+  <Forum>https://github.com/ssouza00/backyard-eq/issues</Forum>
+</CommunityApplications>
