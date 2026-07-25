@@ -1,5 +1,29 @@
 <?xml version="1.0"?>
 <Container version="2">
+  <Name>Backyard EQ</Name>
+  <Repository>ghcr.io/ssouza00/backyard-eq:latest</Repository>
+  <Registry>https://github.com/ssouza00/backyard-eq/pkgs/container/backyard-eq</Registry>
+  <Network>bridge</Network>
+  <Shell>bash</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/ssouza00/backyard-eq/issues</Support>
+  <Project>https://github.com/ssouza00/backyard-eq</Project>
+  <Overview>Professional browser-based audio tuning for Unraid using CamillaDSP and CamillaGUI, with presets, equalization, volume controls, and Spotify pipe support.</Overview>
+  <Description>Run a configurable CamillaDSP audio processor on Unraid. Connect an ALSA sound device, tune playback from the web GUI, and optionally pair it with the Backyard Spotify Connect template through a shared FIFO.</Description>
+  <Category>MediaApp:Music</Category>
+  <WebUI>http://[IP]:[PORT:5005]/gui/index.html</WebUI>
+  <Icon>https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/music-assistant.png</Icon>
+  <TemplateURL>https://raw.githubusercontent.com/ssouza00/backyard-eq/main/templates/backyard-eq.xml</TemplateURL>
+  <Requires>An Unraid host audio device exposed at /dev/snd. The companion Spotify template is optional.</Requires>
+  <ExtraParams></ExtraParams>
+  <Config Name="Web GUI Port" Target="5005" Default="5005" Mode="tcp" Description="CamillaGUI web interface" Type="Port" Display="always" Required="true" Mask="false">5005</Config>
+  <Config Name="Audio Device" Target="/dev/snd" Default="/dev/snd" Mode="" Description="Unraid ALSA sound devices" Type="Device" Display="always" Required="true" Mask="false">/dev/snd</Config>
+  <Config Name="CamillaDSP Config" Target="/config" Default="/mnt/user/appdata/camilladsp" Mode="rw" Description="DSP profiles and state" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/camilladsp</Config>
+  <Config Name="Shared Spotify Audio" Target="/audio" Default="/mnt/user/appdata/spotify-dsp/audio" Mode="rw" Description="Shared Spotify audio pipe" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/spotify-dsp/audio</Config>
+  <Config Name="CamillaGUI Internal Config" Target="/opt/camillagui_backend/config" Default="/mnt/user/appdata/camillagui-internal" Mode="rw" Description="GUI backend configuration" Type="Path" Display="advanced" Required="false" Mask="false">/mnt/user/appdata/camillagui-internal</Config>
+</Container>
+<?xml version="1.0"?>
+<Container version="2">
   <Name>Back-yard-EQ</Name>
   <Repository>ghcr.io/ssouza00/backyard-eq:latest</Repository>
   <Network>br1</Network>
