@@ -8,13 +8,11 @@ if [ ! -f /config/default.yml ]; then
 fi
 
 cp /config/default.yml /root/camilladsp/configs/default.yml
-touch /root/camilladsp/statefile.yml
 rm -f /audio/spotify.pipe
 mkfifo /audio/spotify.pipe
 chmod 666 /audio/spotify.pipe
 
 /usr/local/bin/camilladsp \
-  --statefile /root/camilladsp/statefile.yml \
   --port 1234 \
   --address 0.0.0.0 \
   --logfile /root/camilladsp/camilladsp.log \
