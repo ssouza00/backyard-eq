@@ -1,5 +1,33 @@
 <?xml version="1.0"?>
 <Container version="2">
+  <Name>Backyard Spotify Connect</Name>
+  <Repository>giof71/librespot:latest</Repository>
+  <Registry>https://hub.docker.com/r/giof71/librespot</Registry>
+  <Network>host</Network>
+  <Shell>bash</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/ssouza00/backyard-eq/issues</Support>
+  <Project>https://github.com/GioF71/librespot-docker</Project>
+  <Overview>Spotify Connect receiver for Unraid configured to stream high-quality audio through the companion Backyard EQ container.</Overview>
+  <Description>Advertises a configurable Spotify Connect player on your network using librespot. Audio is written to a shared FIFO for processing and playback by Backyard EQ.</Description>
+  <Category>MediaApp:Music</Category>
+  <WebUI>https://open.spotify.com/</WebUI>
+  <Icon>https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/spotify.png</Icon>
+  <TemplateURL>https://raw.githubusercontent.com/ssouza00/backyard-eq/main/templates/spotify-connect.xml</TemplateURL>
+  <Requires>Install Backyard EQ and configure both containers with the same shared audio directory.</Requires>
+  <ExtraParams></ExtraParams>
+  <Config Name="Spotify Device Name" Target="DEVICE_NAME" Default="Backyard Spotify" Mode="" Description="Spotify Connect device name" Type="Variable" Display="always" Required="true" Mask="false">Backyard Spotify</Config>
+  <Config Name="Audio Backend" Target="BACKEND" Default="pipe" Mode="" Description="Pipe audio into Backyard EQ" Type="Variable" Display="always" Required="true" Mask="false">pipe</Config>
+  <Config Name="Audio Pipe" Target="DEVICE" Default="/audio/spotify.pipe" Mode="" Description="Shared DSP audio pipe" Type="Variable" Display="always" Required="true" Mask="false">/audio/spotify.pipe</Config>
+  <Config Name="Bitrate" Target="BITRATE" Default="320" Mode="" Description="Spotify bitrate in kbps" Type="Variable" Display="always" Required="true" Mask="false">320</Config>
+  <Config Name="Initial Volume" Target="INITIAL_VOLUME" Default="75" Mode="" Description="Startup volume" Type="Variable" Display="always" Required="false" Mask="false">75</Config>
+  <Config Name="Discovery Backend" Target="ZEROCONF_BACKEND" Default="libmdns" Mode="" Description="mDNS backend" Type="Variable" Display="advanced" Required="true" Mask="false">libmdns</Config>
+  <Config Name="Discovery Port" Target="ZEROCONF_PORT" Default="24879" Mode="" Description="Discovery port" Type="Variable" Display="advanced" Required="true" Mask="false">24879</Config>
+  <Config Name="Shared DSP Audio" Target="/audio" Default="/mnt/user/appdata/spotify-dsp/audio" Mode="rw" Description="Shared pipe folder" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/spotify-dsp/audio</Config>
+  <Config Name="System Cache" Target="/data/system-cache" Default="/mnt/user/appdata/spotify-connect/system-cache" Mode="rw" Description="Spotify cache" Type="Path" Display="always" Required="false" Mask="false">/mnt/user/appdata/spotify-connect/system-cache</Config>
+</Container>
+<?xml version="1.0"?>
+<Container version="2">
   <Name>spotify-connect</Name>
   <Repository>giof71/librespot:latest</Repository>
   <Network>br1</Network>
