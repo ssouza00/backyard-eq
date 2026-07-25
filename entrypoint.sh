@@ -11,6 +11,7 @@ cp /config/default.yml /root/camilladsp/configs/default.yml
 touch /root/camilladsp/statefile.yml
 rm -f /audio/spotify.pipe
 mkfifo /audio/spotify.pipe
+chmod 666 /audio/spotify.pipe
 
 /usr/local/bin/camilladsp \
   --statefile /root/camilladsp/statefile.yml \
