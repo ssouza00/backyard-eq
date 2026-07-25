@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>Back-yard-EQ</Name>
+  <Repository>ghcr.io/ssouza00/backyard-eq:latest</Repository>
+  <Network>br1</Network>
+  <WebUI>http://[IP]:5005/gui/index.html</WebUI>
+  <Icon>https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/music-assistant.png</Icon>
+  <ExtraParams></ExtraParams>
+  <Config Name="Audio Device" Target="/dev/snd" Default="/dev/snd" Mode="" Description="Unraid ALSA sound devices" Type="Device" Display="always" Required="true" Mask="false">/dev/snd</Config>
+  <Config Name="CamillaDSP Config" Target="/config" Default="/mnt/user/appdata/camilladsp" Mode="rw" Description="DSP profiles and state" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/camilladsp</Config>
+  <Config Name="Shared Spotify Audio" Target="/audio" Default="/mnt/user/appdata/spotify-dsp/audio" Mode="rw" Description="Shared Spotify audio pipe" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/spotify-dsp/audio</Config>
+  <Config Name="CamillaGUI Internal Config" Target="/opt/camillagui_backend/config" Default="/mnt/user/appdata/camillagui-internal" Mode="rw" Description="GUI backend configuration" Type="Path" Display="advanced" Required="false" Mask="false">/mnt/user/appdata/camillagui-internal</Config>
+</Container>
